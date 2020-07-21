@@ -32,4 +32,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Strings used in the fluency stage !-->
+    <string name="blueCloudText1">Give as many words as you can think of from the letter "A". Tap the microphone below to speak.</string>
+    <string name="blueCloudText2">Make sure you don\'t use proper nouns , numbers and different forms of a verb.</string>
+    <string name="buttonText1">Press on the mic to speak</string>
+    <string name="buttonText2">Listening...</string>
 </resources>
