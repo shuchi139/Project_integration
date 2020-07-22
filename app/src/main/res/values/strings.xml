@@ -38,4 +38,7 @@
     <string name="blueCloudText2">Make sure you don\'t use proper nouns , numbers and different forms of a verb.</string>
     <string name="buttonText1">Press on the mic to speak</string>
     <string name="buttonText2">Listening...</string>
+
+    <!-- Orientation !-->
+    <string name="title">Select from</string>
 </resources>

@@ -3,6 +3,8 @@ package com.example.alzheimers_detection;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -54,6 +56,8 @@ EditText usernameT;int flag=0;
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        askPermissions();
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
         loginimage=findViewById(R.id.loginimage);
@@ -224,8 +228,6 @@ forgotp=findViewById(R.id.forgotp);
             Toast.makeText(getApplicationContext(), "This app needs to record audio through the microphone....", Toast.LENGTH_SHORT).show();
             requestPermissions(new String[]{requiredPermission}, 101);
         }
-
-
     }
 
     @Override
@@ -234,6 +236,14 @@ forgotp=findViewById(R.id.forgotp);
         if (requestCode == 101 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             // This method is called when the  permissions are given
         }
+    }
 
+
+    private void askPermissions(){
+        String[] permissions = new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.RECORD_AUDIO};
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this, permissions, 101);
+        }
     }
 }
