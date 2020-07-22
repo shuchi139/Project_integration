@@ -1,7 +1,10 @@
 package com.example.alzheimers_detection;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.app.Activity;
@@ -20,76 +23,30 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.IOException;
+
 public class NearbyDoctors extends AppCompatActivity {
-    TextView tvAddress;
-    String city;
-    AppLocationService appLocationService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_doctors);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-
-        appLocationService = new AppLocationService(
-                this);
-
-
-        Location location = appLocationService
-                .getLocation(LocationManager.GPS_PROVIDER);
-
-
-        if (location != null) {
-            double latitude = location.getLatitude();
-            double longitude = location.getLongitude();
-            LocationAddress locationAddress = new LocationAddress();
-            locationAddress.getAddressFromLocation(latitude, longitude,
-                    getApplicationContext(), new GeocoderHandler());
-        } else {
-            showSettingsAlert();
+        LocationAPI location = new LocationAPI(NearbyDoctors.this);
+        try {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
+        try {
+            String text[] = location.getLocation().trim().split(" ");
+            String city = text[0].trim();
 
-    }
-    public void showSettingsAlert() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                this);
-        alertDialog.setTitle("SETTINGS");
-        alertDialog.setMessage("Enable Location Provider! Go to settings menu?");
-        alertDialog.setPositiveButton("Settings",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(
-                                Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        getApplicationContext().startActivity(intent);
-                    }
-                });
-        alertDialog.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        alertDialog.show();
-    }
-
-    private class GeocoderHandler extends Handler {
-        @Override
-        public void handleMessage(Message message) {
-            String locationAddress;
-            switch (message.what) {
-                case 1:
-                    Bundle bundle = message.getData();
-                    locationAddress = bundle.getString("address");
-                    break;
-                default:
-                    locationAddress = null;
-            }
-            String s[] = locationAddress.trim().split(" ");
-            city = s[0];
-
-            if(city!=null) {
+            if (city != "") {
                 WebView w = findViewById(R.id.web);
                 String doctor = "neurologist";
                 String link = "https://www.practo.com/search?results_type=doctor&q=%5B%7B%22word%22%3A%22"
@@ -108,17 +65,10 @@ public class NearbyDoctors extends AppCompatActivity {
 
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
-}
 
-/*
- try {
-         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-         String term = "neurologist near me";
-         intent.putExtra(SearchManager.QUERY, term);
-         startActivity(intent);
-         } catch (Exception e) {
-         //
-         }
-         */
+    }
+
+}
