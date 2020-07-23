@@ -153,12 +153,12 @@ public class SignupPhone extends AppCompatActivity {
         });
 
         verifycode.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            code=""+otp_et1+otp_et2+otp_et3+otp_et4+otp_et5+otp_et6;
-            verifyCode(code);
+            @Override
+            public void onClick(View v) {
+                code=""+otp_et1+otp_et2+otp_et3+otp_et4+otp_et5+otp_et6;
+                verifyCode(code);
             }
-            });
+        });
 
     }
 
@@ -177,8 +177,8 @@ public class SignupPhone extends AppCompatActivity {
 
 
 
-Log.d("sms","Verification code sent!!");
-plus91.setVisibility(View.INVISIBLE);
+        Log.d("sms","Verification code sent!!");
+        plus91.setVisibility(View.INVISIBLE);
         other.setVisibility(View.INVISIBLE);
         female.setVisibility(View.INVISIBLE);
         male.setVisibility(View.INVISIBLE);
@@ -212,7 +212,7 @@ plus91.setVisibility(View.INVISIBLE);
 
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+91 "+callnumber,
+                "+91"+callnumber,
                 120,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 TaskExecutors.MAIN_THREAD,mCallbacks);
@@ -235,7 +235,6 @@ plus91.setVisibility(View.INVISIBLE);
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
 
         }
     };

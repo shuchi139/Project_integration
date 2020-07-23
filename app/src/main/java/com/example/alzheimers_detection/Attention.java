@@ -77,10 +77,6 @@ public class Attention extends AppCompatActivity {
 
 
 
-
-
-
-
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +84,6 @@ public class Attention extends AppCompatActivity {
                 {
                     score=score+1;
                     Toast.makeText(getApplicationContext(),"score:"+score,Toast.LENGTH_LONG).show();
-
                 }
                 i++;
                 if(!(i==mThumbIds.length))

@@ -69,11 +69,11 @@ public class Signup extends AppCompatActivity {
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
             //mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-              //      | View.SYSTEM_UI_FLAG_FULLSCREEN
-                //    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                  //  | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    //| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    //| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+            //      | View.SYSTEM_UI_FLAG_FULLSCREEN
+            //    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            //  | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            //| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            //| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
     };
     private View mControlsView;
@@ -184,16 +184,16 @@ public class Signup extends AppCompatActivity {
 
                 else {
 
-                        Pattern pattern = Patterns.EMAIL_ADDRESS;
-                        if(pattern.matcher(usernameT.getText().toString().trim()).matches()==true)
-                        {
-                            createAccount(username,password);
-                        }
-                        else
-                        {
-                            usernameT.requestFocus();
-                            usernameT.setError("Please enter valid email address!");
-                        }
+                    Pattern pattern = Patterns.EMAIL_ADDRESS;
+                    if(pattern.matcher(usernameT.getText().toString().trim()).matches()==true)
+                    {
+                        createAccount(username,password);
+                    }
+                    else
+                    {
+                        usernameT.requestFocus();
+                        usernameT.setError("Please enter valid email address!");
+                    }
 
 
 
@@ -209,65 +209,65 @@ public class Signup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
     }
-public void createAccount(String email, String password)
-{
-    Log.d("mytag","reached createaccount!!!!!!!!");
-    mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                private static final String TAG = "Signup";
+    public void createAccount(String email, String password)
+    {
+        Log.d("mytag","reached createaccount!!!!!!!!");
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    private static final String TAG = "Signup";
 
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success");
-                        FirebaseUser fuser;
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser fuser;
 
-                        fuser = mAuth.getCurrentUser();
-                        //updateUI(user);
-                        //-----------------------------------storing data in database
-                        fuser.sendEmailVerification()
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Log.d(TAG, "Email for verification sent.........");
-                                            Toast.makeText(getApplicationContext(),"Signed up successfully! Please check your email for verification.",Toast.LENGTH_LONG).show();
+                            fuser = mAuth.getCurrentUser();
+                            //updateUI(user);
+                            //-----------------------------------storing data in database
+                            fuser.sendEmailVerification()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "Email for verification sent.........");
+                                                Toast.makeText(getApplicationContext(),"Signed up successfully! Please check your email for verification.",Toast.LENGTH_LONG).show();
 
+                                            }
                                         }
-                                    }
-                                });
-                        nextactivity(fuser);
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                        Toast.makeText(getApplicationContext(), "Signup failed. User with same email address must already exist.",
-                                Toast.LENGTH_SHORT).show();
-                        //updateUI(null);
+                                    });
+                            nextactivity(fuser);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Signup failed. User with same email address must already exist.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+
+                        // ...
                     }
-
-                    // ...
-                }
-            });
+                });
 
 
-}
-public void nextactivity(FirebaseUser fuser)
-{
-    Log.d("mytag2","reached nextactivityyyyyyy!!!!!!!!");
-    String QRC;
-    QRC="0";
-    dbUsers= FirebaseDatabase.getInstance().getReference("Users");
-    String bdate=birthdate.getDayOfMonth()+"-"+birthdate.getMonth()+"-"+birthdate.getYear();
+    }
+    public void nextactivity(FirebaseUser fuser)
+    {
+        Log.d("mytag2","reached nextactivityyyyyyy!!!!!!!!");
+        String QRC;
+        QRC="0";
+        dbUsers= FirebaseDatabase.getInstance().getReference("Users");
+        String bdate=birthdate.getDayOfMonth()+"-"+birthdate.getMonth()+"-"+birthdate.getYear();
 
-    User user1=new User(firstnameT.getText().toString().trim(),lastnameT.getText().toString().trim(),male.isSelected()?"Male":female.isSelected()?"Female":"Not mentionable",username,bdate,QRC);
-    String id=fuser.getUid();
-    dbUsers.child(id).setValue(user1);
+        User user1=new User(firstnameT.getText().toString().trim(),lastnameT.getText().toString().trim(),male.isSelected()?"Male":female.isSelected()?"Female":"Not mentionable",username,bdate,QRC);
+        String id=fuser.getUid();
+        dbUsers.child(id).setValue(user1);
 
-    Intent i=new Intent(getApplicationContext(),FamilyHistory.class);
-    i.putExtra("flag",flag);
-    startActivity(i);
-}
+        Intent i=new Intent(getApplicationContext(),FamilyHistory.class);
+        i.putExtra("flag",flag);
+        startActivity(i);
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

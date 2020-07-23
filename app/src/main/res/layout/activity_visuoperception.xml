@@ -14,7 +14,7 @@
         android:layout_x="282dp"
         android:layout_y="611dp"
         android:fontFamily="casual"
-        android:text="Cat"
+        android:text="@string/Visuoperception_opt11"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
         android:layout_x="281dp"
         android:layout_y="501dp"
         android:fontFamily="casual"
-        android:text="No"
+        android:text="@string/Visuoperception_opt9"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
         android:layout_x="31dp"
         android:layout_y="557dp"
         android:fontFamily="casual"
-        android:text="Pages"
+        android:text="@string/Visuoperception_opt2"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
         android:layout_x="282dp"
         android:layout_y="556dp"
         android:fontFamily="casual"
-        android:text="Or"
+        android:text="@string/Visuoperception_opt10"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -58,8 +58,7 @@
         android:layout_x="148dp"
         android:layout_y="669dp"
         android:fontFamily="casual"
-        android:text="Words"
-
+        android:text="@string/Visuoperception_opt8"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -70,7 +69,7 @@
         android:layout_x="150dp"
         android:layout_y="611dp"
         android:fontFamily="casual"
-        android:text="Man"
+        android:text="@string/Visuoperception_opt7"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -81,7 +80,7 @@
         android:layout_x="152dp"
         android:layout_y="557dp"
         android:fontFamily="casual"
-        android:text="Dog"
+        android:text="@string/Visuoperception_opt6"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -92,8 +91,7 @@
         android:layout_x="33dp"
         android:layout_y="671dp"
         android:fontFamily="casual"
-        android:text="Novel"
-
+        android:text="@string/Visuoperception_opt4"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -104,7 +102,7 @@
         android:layout_x="33dp"
         android:layout_y="506dp"
         android:fontFamily="casual"
-        android:text="Not"
+        android:text="@string/Visuoperception_opt1"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -115,7 +113,7 @@
         android:layout_x="152dp"
         android:layout_y="502dp"
         android:fontFamily="casual"
-        android:text="Read"
+        android:text="@string/Visuoperception_opt5"
         android:checked="false"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -135,7 +133,7 @@
         android:layout_x="45dp"
         android:layout_y="93dp"
         android:fontFamily="sans-serif"
-        android:text="Look for 6 Hidden Words in the picture below"
+        android:text="@string/VisuoperceptionSt1"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -146,7 +144,7 @@
         android:layout_x="44dp"
         android:layout_y="457dp"
         android:fontFamily="sans-serif"
-        android:text="Now , choose these 6 words from the options below"
+        android:text="@string/VisuoperceptionSt2"
         android:textStyle="bold" />
 
     <pl.droidsonroids.gif.GifImageView
@@ -171,7 +169,7 @@
         android:layout_x="33dp"
         android:layout_y="613dp"
         android:fontFamily="casual"
-        android:text="Tree"
+        android:text="@string/Visuoperception_opt3"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -182,7 +180,7 @@
         android:layout_x="283dp"
         android:layout_y="669dp"
         android:fontFamily="casual"
-        android:text="Book"
+        android:text="opt12"
         android:textSize="18sp"
         android:textStyle="bold" />
 

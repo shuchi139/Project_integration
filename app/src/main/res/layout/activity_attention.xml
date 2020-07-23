@@ -24,7 +24,7 @@
         android:layout_x="86dp"
         android:layout_y="71dp"
         android:fontFamily="cursive"
-        android:text="Remember this doughnut !"
+        android:text="@string/attentionSt2"
         android:textSize="27sp"
         android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
         android:layout_x="221dp"
         android:layout_y="690dp"
         android:background="@drawable/shape_button"
-        android:text="NO"
+        android:text="@string/attentionbtn2"
         android:textColor="#0A0909"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="215dp"
@@ -55,7 +55,7 @@
         android:layout_x="50dp"
         android:layout_y="690dp"
         android:background="@drawable/shape_button"
-        android:text="YES"
+        android:text="@string/attentionbtn1"
         android:textColor="#0A0808"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="215dp"
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_x="78dp"
         android:layout_y="163dp"
-        android:text="DUNKIN' DOUGHNUTS"
+        android:text="@string/attentionSt4"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
@@ -113,7 +113,7 @@
         android:layout_x="86dp"
         android:layout_y="89dp"
         android:fontFamily="cursive"
-        android:text="the same as previous one ?"
+        android:text="@string/attentionsSt3"
         android:textSize="27sp"
         android:textStyle="bold" />
 
@@ -124,7 +124,7 @@
         android:layout_x="121dp"
         android:layout_y="52dp"
         android:fontFamily="cursive"
-        android:text="Is this doughnut "
+        android:text="@string/attentionSt1"
         android:textSize="27sp"
         android:textStyle="bold" />
 
