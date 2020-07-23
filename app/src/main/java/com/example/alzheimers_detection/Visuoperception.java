@@ -197,7 +197,6 @@ public class Visuoperception extends AppCompatActivity {
             toast.show();
             Log.d("cnt",""+cnt);
             v.setChecked(false);
-
         }
         else
         {

@@ -26,14 +26,10 @@ public class TextAdapter extends ArrayAdapter<ChatMessage> {
         int layoutResource ; // determined by view type
         ChatMessage chatMessage = getItem(position);
 
-
-
         layoutResource = R.layout.rightcloud;
-
         convertView = inflater.inflate(layoutResource, parent, false);
         holder = new ViewHolder(convertView);
         convertView.setTag(holder);
-
 
         //set message content
         holder.msg.setText(chatMessage.getContent());

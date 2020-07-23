@@ -366,8 +366,6 @@ public class Abstraction extends AppCompatActivity {
                 {
                     seconds=seconds-1;
                     handler.postDelayed(this,1000);
-
-
                 }
                 else
                 {

@@ -25,11 +25,11 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class LoginOtpByPhone extends AppCompatActivity {
-String verificationId,code;
-Button verifycode;
-EditText otp_et1,otp_et2,otp_et3,otp_et4,otp_et5,otp_et6;
-TextView tophonenumber;
-String callnumber;
+    String verificationId,code;
+    Button verifycode;
+    EditText otp_et1,otp_et2,otp_et3,otp_et4,otp_et5,otp_et6;
+    TextView tophonenumber;
+    String callnumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +47,12 @@ String callnumber;
         verifycode=findViewById(R.id.verifycode);
         Bundle bundle = getIntent().getExtras();
 
+
         callnumber=bundle.getString("tophonenumber").trim();
-        tophonenumber.append(""+bundle.getString("tophonenumber"));
+        tophonenumber.append(""+callnumber);
+
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+91 "+callnumber,        // Phone number to verify
+                "+91"+callnumber,        // Phone number to verify
                 120,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 TaskExecutors.MAIN_THREAD,mCallbacks);
